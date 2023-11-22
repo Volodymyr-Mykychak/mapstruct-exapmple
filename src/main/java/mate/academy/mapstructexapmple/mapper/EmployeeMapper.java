@@ -9,6 +9,7 @@ import org.mapstruct.Mapping;
 
 @Mapper(config = MapperConfig.class, uses = DepartmentMapper.class)
 public interface EmployeeMapper {
+    @Mapping(source = "department.id", target = "departmentId")
     EmployeeDto toDto(Employee employee);
 
     @Mapping(target = "department", source = "departmentId",
