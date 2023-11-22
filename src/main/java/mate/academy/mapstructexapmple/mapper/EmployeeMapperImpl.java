@@ -2,6 +2,7 @@ package mate.academy.mapstructexapmple.mapper;
 
 import mate.academy.mapstructexapmple.dto.CreateEmployeeRequestDto;
 import mate.academy.mapstructexapmple.dto.EmployeeDto;
+import mate.academy.mapstructexapmple.model.Department;
 import mate.academy.mapstructexapmple.model.Employee;
 import org.springframework.stereotype.Component;
 
@@ -25,6 +26,8 @@ public class EmployeeMapperImpl implements EmployeeMapper {
         Employee employee = new Employee();
         employee.setName(requestDto.name());
         employee.setEmail(requestDto.email());
+
+        employee.setDepartment(new Department(requestDto.departmentId()));
         return employee;
     }
 }
