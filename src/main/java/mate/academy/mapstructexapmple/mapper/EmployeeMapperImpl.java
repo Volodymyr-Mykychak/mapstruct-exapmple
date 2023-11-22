@@ -2,12 +2,15 @@ package mate.academy.mapstructexapmple.mapper;
 
 import mate.academy.mapstructexapmple.dto.CreateEmployeeRequestDto;
 import mate.academy.mapstructexapmple.dto.EmployeeDto;
-import mate.academy.mapstructexapmple.model.Department;
 import mate.academy.mapstructexapmple.model.Employee;
-import org.springframework.stereotype.Component;
 
-@Component
 public class EmployeeMapperImpl implements EmployeeMapper {
+    private final DepartmentMapper departmentMapper;
+
+    public EmployeeMapperImpl(DepartmentMapper departmentMapper) {
+        this.departmentMapper = departmentMapper;
+    }
+
     public EmployeeDto toDto(Employee employee) {
         if (employee == null) {
             return null;
@@ -26,8 +29,7 @@ public class EmployeeMapperImpl implements EmployeeMapper {
         Employee employee = new Employee();
         employee.setName(requestDto.name());
         employee.setEmail(requestDto.email());
-
-        employee.setDepartment(new Department(requestDto.departmentId()));
+        employee.setDepartment(departmentMapper.departmentById(requestDto.departmentId()));
         return employee;
     }
 }
