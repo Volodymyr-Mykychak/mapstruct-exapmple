@@ -5,10 +5,14 @@ import mate.academy.mapstructexapmple.dto.CreateEmployeeRequestDto;
 import mate.academy.mapstructexapmple.dto.EmployeeDto;
 import mate.academy.mapstructexapmple.model.Employee;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 
-@Mapper(config = MapperConfig.class)
+@Mapper(config = MapperConfig.class, uses = DepartmentMapper.class)
 public interface EmployeeMapper {
+    @Mapping(source = "department.id", target = "departmentId")
     EmployeeDto toDto(Employee employee);
 
+    @Mapping(target = "department", source = "departmentId",
+            qualifiedByName = "departmentById")
     Employee toModel(CreateEmployeeRequestDto requestDto);
 }
