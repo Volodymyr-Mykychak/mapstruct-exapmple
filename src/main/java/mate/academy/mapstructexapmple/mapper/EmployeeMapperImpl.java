@@ -1,14 +1,10 @@
 package mate.academy.mapstructexapmple.mapper;
 
-import java.util.List;
 import mate.academy.mapstructexapmple.dto.employee.CreateEmployeeRequestDto;
 import mate.academy.mapstructexapmple.dto.employee.EmployeeDto;
 import mate.academy.mapstructexapmple.dto.employee.EmployeeWithoutSkillsDto;
 import mate.academy.mapstructexapmple.model.Employee;
-import mate.academy.mapstructexapmple.model.Skill;
-import org.springframework.stereotype.Component;
 
-@Component
 public class EmployeeMapperImpl implements EmployeeMapper {
     private final DepartmentMapper departmentMapper;
 
@@ -30,13 +26,6 @@ public class EmployeeMapperImpl implements EmployeeMapper {
         }
         setSkillIds(employeeDto, employee);
         return employeeDto;
-    }
-
-    private void setSkillIds(EmployeeDto employeeDto, Employee employee) {
-        List<Long> skillIds = employee.getSkills().stream()
-                .map(Skill::getId)
-                .toList();
-        employeeDto.setSkills(skillIds);
     }
 
     @Override
@@ -63,15 +52,7 @@ public class EmployeeMapperImpl implements EmployeeMapper {
         employee.setName(requestDto.name());
         employee.setEmail(requestDto.email());
         employee.setDepartment(departmentMapper.departmentById(requestDto.departmentId()));
-        setSkills(requestDto.skills(), employee);
+        setSkills(employee, requestDto);
         return employee;
-    }
-
-    private void setSkills(List<Long> skillIds, Employee employee) {
-        List<Skill> skills = skillIds.stream()
-                .map(Skill::new)
-                .toList();
-        employee.setSkills(skills);
-
     }
 }
