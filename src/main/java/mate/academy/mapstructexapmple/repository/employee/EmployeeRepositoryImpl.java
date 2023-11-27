@@ -1,4 +1,4 @@
-package mate.academy.mapstructexapmple.repository;
+package mate.academy.mapstructexapmple.repository.employee;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
@@ -42,7 +42,7 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
     @Override
     public List<Employee> findAll() {
         try (EntityManager entityManager = entityManagerFactory.createEntityManager()) {
-            return entityManager.createQuery("SELECT e FROM Employee  e",
+            return entityManager.createQuery("SELECT e FROM Employee  e JOIN FETCH e.skills",
                     Employee.class).getResultList();
         }
     }

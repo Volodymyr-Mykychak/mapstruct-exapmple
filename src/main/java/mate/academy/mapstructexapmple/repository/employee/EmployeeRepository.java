@@ -1,4 +1,4 @@
-package mate.academy.mapstructexapmple.repository;
+package mate.academy.mapstructexapmple.repository.employee;
 
 import java.util.List;
 import java.util.Optional;
