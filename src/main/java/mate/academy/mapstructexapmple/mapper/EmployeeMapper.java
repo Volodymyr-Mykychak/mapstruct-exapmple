@@ -8,11 +8,11 @@ import mate.academy.mapstructexapmple.dto.employee.EmployeeWithoutSkillsDto;
 import mate.academy.mapstructexapmple.model.Department;
 import mate.academy.mapstructexapmple.model.Employee;
 import mate.academy.mapstructexapmple.model.Skill;
+import org.mapstruct.AfterMapping;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
-import org.mapstruct.Named;
-import org.mapstruct.AfterMapping;
 import org.mapstruct.MappingTarget;
+import org.mapstruct.Named;
 
 @Mapper(config = MapperConfig.class, uses = DepartmentMapper.class)
 public interface EmployeeMapper {
@@ -33,6 +33,7 @@ public interface EmployeeMapper {
         employeeDto.setSkillIds(skillIds);
     }
 
+    @Mapping(source = "department", target = "department", qualifiedByName = "mapDepartmentToId")
     EmployeeWithoutSkillsDto toEmployeeWithoutSkillsDto(Employee employee);
 
     @Mapping(target = "department", source = "departmentId",
