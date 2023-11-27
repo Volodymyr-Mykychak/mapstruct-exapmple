@@ -1,5 +1,10 @@
 package mate.academy.mapstructexapmple.dto.employee;
 
-public record CreateEmployeeRequestDto(String name, String email, Long departmentId) {
+import java.util.List;
+
+public record CreateEmployeeRequestDto(String name,
+                                       String email,
+                                       Long departmentId,
+                                       List<Long> skills) {
 
 }
