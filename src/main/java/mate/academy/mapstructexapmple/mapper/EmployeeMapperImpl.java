@@ -3,6 +3,7 @@ package mate.academy.mapstructexapmple.mapper;
 import java.util.List;
 import mate.academy.mapstructexapmple.dto.employee.CreateEmployeeRequestDto;
 import mate.academy.mapstructexapmple.dto.employee.EmployeeDto;
+import mate.academy.mapstructexapmple.dto.employee.EmployeeWithoutSkillsDto;
 import mate.academy.mapstructexapmple.model.Employee;
 import mate.academy.mapstructexapmple.model.Skill;
 import org.springframework.stereotype.Component;
@@ -36,6 +37,21 @@ public class EmployeeMapperImpl implements EmployeeMapper {
                 .map(Skill::getId)
                 .toList();
         employeeDto.setSkills(skillIds);
+    }
+
+    @Override
+    public EmployeeWithoutSkillsDto toEmployeeWithoutSkillsDto(Employee employee) {
+        if (employee == null) {
+            return null;
+        }
+        EmployeeWithoutSkillsDto employeeDto = new EmployeeWithoutSkillsDto();
+        employeeDto.setId(employee.getId());
+        employeeDto.setName(employee.getName());
+        employeeDto.setEmail(employee.getEmail());
+        if (employee.getDepartment() != null) {
+            employeeDto.setDepartment(employee.getDepartment().getId());
+        }
+        return employeeDto;
     }
 
     @Override

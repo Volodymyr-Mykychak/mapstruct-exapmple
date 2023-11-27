@@ -42,7 +42,7 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
     @Override
     public List<Employee> findAll() {
         try (EntityManager entityManager = entityManagerFactory.createEntityManager()) {
-            return entityManager.createQuery("SELECT e FROM Employee  e",
+            return entityManager.createQuery("SELECT e FROM Employee  e JOIN FETCH e.skills",
                     Employee.class).getResultList();
         }
     }
