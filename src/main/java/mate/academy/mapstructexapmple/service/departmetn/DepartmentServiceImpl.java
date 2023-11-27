@@ -1,13 +1,13 @@
-package mate.academy.mapstructexapmple.service;
+package mate.academy.mapstructexapmple.service.departmetn;
 
 import java.util.List;
 import lombok.RequiredArgsConstructor;
-import mate.academy.mapstructexapmple.dto.CreateDepartmentRequestDto;
-import mate.academy.mapstructexapmple.dto.DepartmentDto;
+import mate.academy.mapstructexapmple.dto.department.CreateDepartmentRequestDto;
+import mate.academy.mapstructexapmple.dto.department.DepartmentDto;
 import mate.academy.mapstructexapmple.exception.EntityNotFoundException;
 import mate.academy.mapstructexapmple.mapper.DepartmentMapper;
 import mate.academy.mapstructexapmple.model.Department;
-import mate.academy.mapstructexapmple.repository.DepartmentRepository;
+import mate.academy.mapstructexapmple.repository.department.DepartmentRepository;
 import org.springframework.stereotype.Service;
 
 @RequiredArgsConstructor

@@ -2,9 +2,9 @@ package mate.academy.mapstructexapmple.controller;
 
 import java.util.List;
 import lombok.RequiredArgsConstructor;
-import mate.academy.mapstructexapmple.dto.CreateDepartmentRequestDto;
-import mate.academy.mapstructexapmple.dto.DepartmentDto;
-import mate.academy.mapstructexapmple.service.DepartmentService;
+import mate.academy.mapstructexapmple.dto.department.CreateDepartmentRequestDto;
+import mate.academy.mapstructexapmple.dto.department.DepartmentDto;
+import mate.academy.mapstructexapmple.service.departmetn.DepartmentService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;

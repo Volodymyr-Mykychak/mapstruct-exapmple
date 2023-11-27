@@ -1,14 +1,14 @@
-package mate.academy.mapstructexapmple.service;
+package mate.academy.mapstructexapmple.service.employee;
 
 import java.util.List;
 import java.util.Random;
 import lombok.RequiredArgsConstructor;
-import mate.academy.mapstructexapmple.dto.CreateEmployeeRequestDto;
-import mate.academy.mapstructexapmple.dto.EmployeeDto;
+import mate.academy.mapstructexapmple.dto.employee.CreateEmployeeRequestDto;
+import mate.academy.mapstructexapmple.dto.employee.EmployeeDto;
 import mate.academy.mapstructexapmple.exception.EntityNotFoundException;
 import mate.academy.mapstructexapmple.mapper.EmployeeMapper;
 import mate.academy.mapstructexapmple.model.Employee;
-import mate.academy.mapstructexapmple.repository.EmployeeRepository;
+import mate.academy.mapstructexapmple.repository.employee.EmployeeRepository;
 import org.springframework.stereotype.Service;
 
 @RequiredArgsConstructor

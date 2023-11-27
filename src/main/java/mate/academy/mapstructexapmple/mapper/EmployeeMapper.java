@@ -1,8 +1,8 @@
 package mate.academy.mapstructexapmple.mapper;
 
 import mate.academy.mapstructexapmple.config.MapperConfig;
-import mate.academy.mapstructexapmple.dto.CreateEmployeeRequestDto;
-import mate.academy.mapstructexapmple.dto.EmployeeDto;
+import mate.academy.mapstructexapmple.dto.employee.CreateEmployeeRequestDto;
+import mate.academy.mapstructexapmple.dto.employee.EmployeeDto;
 import mate.academy.mapstructexapmple.model.Employee;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;

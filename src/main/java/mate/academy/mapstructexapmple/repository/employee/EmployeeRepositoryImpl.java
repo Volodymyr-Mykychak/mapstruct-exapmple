@@ -1,4 +1,4 @@
-package mate.academy.mapstructexapmple.repository;
+package mate.academy.mapstructexapmple.repository.employee;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
@@ -6,23 +6,23 @@ import jakarta.persistence.EntityTransaction;
 import java.util.List;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
-import mate.academy.mapstructexapmple.model.Department;
+import mate.academy.mapstructexapmple.model.Employee;
 import org.springframework.stereotype.Repository;
 
 @RequiredArgsConstructor
 @Repository
-public class DepartmentRepositoryImpl implements DepartmentRepository {
+public class EmployeeRepositoryImpl implements EmployeeRepository {
     private final EntityManagerFactory entityManagerFactory;
 
     @Override
-    public Department save(Department department) {
+    public Employee save(Employee employee) {
         EntityTransaction transaction = null;
         try (EntityManager entityManager = entityManagerFactory.createEntityManager()) {
             transaction = entityManager.getTransaction();
             transaction.begin();
-            entityManager.persist(department);
+            entityManager.persist(employee);
             transaction.commit();
-            return department;
+            return employee;
         } catch (RuntimeException e) {
             if (transaction != null && transaction.isActive()) {
                 transaction.rollback();
@@ -32,28 +32,28 @@ public class DepartmentRepositoryImpl implements DepartmentRepository {
     }
 
     @Override
-    public Optional<Department> findById(Long id) {
+    public Optional<Employee> findById(Long id) {
         try (EntityManager entityManager = entityManagerFactory.createEntityManager()) {
-            Department department = entityManager.find(Department.class, id);
-            return Optional.ofNullable(department);
+            Employee employee = entityManager.find(Employee.class, id);
+            return Optional.ofNullable(employee);
         }
     }
 
     @Override
-    public List<Department> findAll() {
+    public List<Employee> findAll() {
         try (EntityManager entityManager = entityManagerFactory.createEntityManager()) {
-            return entityManager.createQuery("SELECT e FROM Department e",
-                    Department.class).getResultList();
+            return entityManager.createQuery("SELECT e FROM Employee  e",
+                    Employee.class).getResultList();
         }
     }
 
     @Override
-    public List<Department> findAllByName(String name) {
+    public List<Employee> findAllByName(String name) {
         String lowerCaseName = name.toLowerCase();
         try (EntityManager entityManager = entityManagerFactory.createEntityManager()) {
             return entityManager
-                    .createQuery("SELECT e FROM Department  e WHERE lower(e.name) "
-                            + "LIKE :name", Department.class)
+                    .createQuery("SELECT e FROM Employee e WHERE lower(e.name) "
+                            + "LIKE :name", Employee.class)
                     .setParameter("name", "%" + lowerCaseName + "%")
                     .getResultList();
         }

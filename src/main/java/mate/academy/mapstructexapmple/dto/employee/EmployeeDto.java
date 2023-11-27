@@ -1,4 +1,4 @@
-package mate.academy.mapstructexapmple.dto;
+package mate.academy.mapstructexapmple.dto.employee;
 
 import lombok.Data;
 
