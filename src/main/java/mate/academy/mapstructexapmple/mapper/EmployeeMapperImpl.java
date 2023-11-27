@@ -45,11 +45,9 @@ public class EmployeeMapperImpl implements EmployeeMapper {
     }
 
     private void setSkills(List<Long> skillIds, Employee employee) {
-        List<Skill> skills = new ArrayList<>(skillIds.size());
-        for (Long id : skillIds) {
-            Skill skill = new Skill(id);
-            skills.add(skill);
-        }
+        List<Skill> skills = skillIds.stream()
+                .map(Skill::new)
+                .toList();
         employee.setSkills(skills);
 
     }
