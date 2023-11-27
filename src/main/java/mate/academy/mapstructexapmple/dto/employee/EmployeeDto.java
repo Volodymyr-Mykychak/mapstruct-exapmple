@@ -1,5 +1,6 @@
 package mate.academy.mapstructexapmple.dto.employee;
 
+import java.util.List;
 import lombok.Data;
 
 @Data
@@ -8,4 +9,5 @@ public class EmployeeDto {
     private String name;
     private String email;
     private Long departmentId;
+    private List<Long> skills;
 }

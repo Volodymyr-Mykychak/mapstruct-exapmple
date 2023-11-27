@@ -27,7 +27,15 @@ public class EmployeeMapperImpl implements EmployeeMapper {
         if (employee.getDepartment() != null) {
             employeeDto.setDepartmentId(employee.getDepartment().getId());
         }
+        setSkillIds(employeeDto, employee);
         return employeeDto;
+    }
+
+    private void setSkillIds(EmployeeDto employeeDto, Employee employee) {
+        List<Long> skillIds = employee.getSkills().stream()
+                .map(Skill::getId)
+                .toList();
+        employeeDto.setSkills(skillIds);
     }
 
     @Override
