@@ -1,13 +1,11 @@
 package mate.academy.mapstructexapmple.mapper;
 
+import java.util.List;
 import mate.academy.mapstructexapmple.dto.employee.CreateEmployeeRequestDto;
 import mate.academy.mapstructexapmple.dto.employee.EmployeeDto;
 import mate.academy.mapstructexapmple.model.Employee;
 import mate.academy.mapstructexapmple.model.Skill;
 import org.springframework.stereotype.Component;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Component
 public class EmployeeMapperImpl implements EmployeeMapper {
@@ -41,6 +39,7 @@ public class EmployeeMapperImpl implements EmployeeMapper {
         employee.setName(requestDto.name());
         employee.setEmail(requestDto.email());
         employee.setDepartment(departmentMapper.departmentById(requestDto.departmentId()));
+        setSkills(requestDto.skills(), employee);
         return employee;
     }
 
